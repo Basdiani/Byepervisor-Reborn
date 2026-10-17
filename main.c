@@ -174,7 +174,7 @@ int main(void)
 
   // Do a quick firmware version detect, if we don't have offsets for it, goodbye!
   fw = kernel_get_fw_version();
-  printf("[+] Detected firmware: %x.%x\n", (fw & 0xFF000000) >> 0x18, (fw & 0x00FF0000) >> 0x10);
+  printf("[+] Detected firmware: %x.%02x\n", (fw & 0xFF000000) >> 0x18, (fw & 0x00FF0000) >> 0x10);
 
   if (kdlsym(KERNEL_SYM_HV_MP_STARTUP_CALL) == 0) {
     printf("[!] Undetected firmware, exiting!\n");
@@ -319,7 +319,7 @@ int main(void)
     }
 
     printf("[+] Hook installed, enter sleep and resume!\n");
-    notifyf("Byepervisor Reborn\nEntering rest mode for in 3 secs\n");
+    notifyf("Byepervisor Reborn\nEntering rest mode in 3 secs\n");
     sleep(3);
     sceSystemStateMgrEnterStandby();
   } else {
